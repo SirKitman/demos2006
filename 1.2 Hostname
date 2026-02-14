@@ -1,0 +1,3 @@
+hostnamectl set-hostname <имя хоста>
+newgrp
+ISP isp
