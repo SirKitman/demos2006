@@ -1,0 +1,69 @@
+HQ-RTR
+
+Устанавливаем, при необходимости, frr.
+apt install frr -y
+
+Далее, включаем OSPF, поменяв значение "no" на "yes".
+nano /etc/frr/daemons
+
+ospfd=no , сделать ospfd=yes
+
+Добавляем frr в автозагрузку.
+systemctl enable frr
+
+Перезагружаем frr.
+systemctl restart frr
+
+Зайдем в frr, введя команду vtysh. Далее, переходим в conf t, пропишем ip forwarding и затем в router ospf. Прописываем следующие команды:(Команды надо вписывать поочередно)
+
+passive-interface default
+network 192.168.100.0/26 area 0
+network 192.168.200.0/28 area 0
+network 10.10.0.0/30 area 0
+area 0 authentication
+exit
+interface tun1
+no ip ospf network broadcast
+no ip ospf passive
+ip ospf authentication
+ip ospf authentication-key password
+exit
+
+do write - САМОЕ ГЛАВНОЕ, ОНА СОХРАНЯЕТ КОНФИГ. БЕЗ НЕЕ БУДЕТ СБРОС ВЫШЕУПОМЯНУТЫХ КОМАНД. (do write надо делать ещё в frr)
+
+Выходим из frr командой exit и перезапускаем службу systemctl restart frr
+
+BR-RTR 
+
+Устанавливаем, при необходимости, frr.
+apt install frr -y
+
+Далее, включаем OSPF, поменяв значение "no" на "yes".
+nano /etc/frr/daemons
+
+ospfd=no , сделать ospfd=yes
+
+Добавляем frr в автозагрузку.
+systemctl enable frr
+
+Перезагружаем frr.
+systemctl restart frr
+
+Зайдем в frr, введя команду vtysh. Далее, переходим в conf t, пропишем ip forwarding и затем в router ospf. Прописываем следующие команды:
+
+passive-interface default
+network 192.168.0.0/27 area 0
+network 10.10.0.0/30 area 0
+area 0 authentication
+exit
+interface tun1
+no ip ospf network broadcast
+no ip ospf passive
+ip ospf authentication
+ip ospf authentication-key password
+exit
+
+do write - САМОЕ ГЛАВНОЕ, ОНА СОХРАНЯЕТ КОНФИГ. БЕЗ НЕЕ БУДЕТ СБРОС ВЫШЕУПОМЯНУТЫХ КОМАНД. (do write надо делать ещё в frr)
+
+Выходим из frr командой exit и перезапускаем службу systemctl restart frr
+Проверка. Пингуем BR-SRV с HQ-SRV.
