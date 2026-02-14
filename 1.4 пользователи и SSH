@@ -1,0 +1,29 @@
+HQ-SRV и BR-SRV
+useradd sshuser -u- 2026 -U - создание пользователя
+passwd sshuser - задать пароль пользователю
+вводим пароль пользователя - P@ssw0rd
+повторяем ввод пароля - P@ssw0rd
+
+SSH ( HQ-SRV и BR-SRV )
+Создадим файл баннера, допустим "banner_ssh" и напишем текст ( можно написать без =, Authorized Access Only )
+nano /etc/banner_ssh
+
+Пропишем выделенные параметры в конфигурационный файл
+nano /etc/ssh/sshd_config
+
+Port 2026
+AllowUAsers sshuser
+Banner /etc/banner_ssh
+MaxAuthTries 2
+
+После, перезапускаем службу SSH.
+systemctl restart ssh
+
+Проверка SSH ( HQ-RTR )
+Подключаемся с HQ-RTR указав имя созданного пользователя, ip-адрес HQ-SRV и порт 2026. Далее вводим пароль.
+Далее прописываем sudo su, если пароль не запросился и вы вошли под root, то всё сделано правильно
+
+HQ-RTR и BR-RTR
+Создадим пользователя net_admin и зададим ему пароль P@ssw0rd
+useradd net_admin
+passwd net_admin
