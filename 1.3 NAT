@@ -1,0 +1,26 @@
+Правило 
+ПРОПИСЫВАЕМ ПРАВИЛО НА ISP, HQ-RTR и BR-RTR
+Добавим правило для NAT в nftables.conf
+nano /etc/nftables.conf
+Указываем интерфейс, смотрящий в сторону Интернета
+
+table inet nat {
+    chain POSTROUTING {
+    type nat hook postrouting priority srcnat;
+    oifname "ens192" masguerade
+    }
+}
+
+systemctl enable nftables - добавление службы в автозапуск
+systemctl start nftables - включение службы
+
+Переадресация пакетов
+❗❗❗ВКЛЮЧАЕМ НА ISP, HQ-RTR, BR-RTR❗❗❗
+nano /etc/sysctl.conf
+Раскомменчиваем строку
+
+net.ipv4.ip_forwaed=1
+
+sysctl -p применение настройки
+
+Перезгружайте виртуалку, если не заработало
