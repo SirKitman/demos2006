@@ -7,7 +7,7 @@ nano /etc/nftables.conf
 table inet nat {
     chain POSTROUTING {
     type nat hook postrouting priority srcnat;
-    oifname "ens192" masguerade
+    oifname "ens192" masquerade
     }
 }
 
