@@ -1,0 +1,6 @@
+HQ-SRV
+
+Скачиваем пакет bind9
+apt install bind9 -y
+
+nano /etc/bind/named.conf.options
