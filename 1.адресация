@@ -33,26 +33,26 @@ iface ens192 inet dhcp
 
 auto ens224
 iface ens224 inet static
-address 192.168.4.1/28
+address 172.16.1.1/28
 
 auto ens256
 iface ens256 inet static
-address 192.168.5.1/28
+address 172.16.2.1/28
 
 HQ-RTR
 
 auto ens192
 iface ens192 inet static
-address 172.16.4.2/28
-gateway 172.16.4.1
+address 172.16.1.2/28
+gateway 172.16.1.1
 
 auto ens224
 iface ens224 inet static
-address 102.168.200.1/26
+address 192.168.100.1/26
 
 auto ens224:1
 iface ens224:1 inet static
-address 102.168.200.1/28
+address 192.168.200.1/28
 
 auto ens224:2
 iface ens224:2 inet static
@@ -74,15 +74,20 @@ BR-RTR
 
 auto ens192
 iface ens192 inet static
-address 172.16.5.2/28
-gateway 172.16.5.1
+address 172.16.2.2/28
+gateway 172.16.2.1
+
+auto ens224
+iface ens224 inet static
+address 172.168.1.2/28
+gateway 172.168.1.1
 
 HQ-SRV
 
 auto ens192
 iface ens192 inet static
-address 172.168.100.2/26
-gateway 172.168.100.1
+address 192.168.100.2/26
+gateway 192.168.100.1
 
 BR-SRV
 
