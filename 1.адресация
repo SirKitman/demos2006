@@ -79,8 +79,7 @@ gateway 172.16.2.1
 
 auto ens224
 iface ens224 inet static
-address 172.168.1.2/28
-gateway 172.168.1.1
+address 192.168.1.2/28
 
 HQ-SRV
 
@@ -93,8 +92,8 @@ BR-SRV
 
 auto ens192
 iface ens192 inet static
-address 172.168.0.2/28
-gateway 172.168.0.1
+address 192.168.1.2/28
+gateway 192.168.1.1
 
 HQ-CLI
 su root
