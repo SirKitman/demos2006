@@ -4,6 +4,17 @@ passwd sshuser - задать пароль пользователю
 вводим пароль пользователя - P@ssw0rd
 повторяем ввод пароля - P@ssw0rd
 
+HQ-RTR и BR-RTR
+Создадим пользователя net_admin и зададим ему пароль P@ssw0rd
+useradd net_admin
+passwd net_admin
+
+HQ-RTR и BR-RTR
+пишем  visudo
+находим сторчку # User privilege specification  и под ней добавляем
+net_admin  ALL=(ALL:ALL)  ALL
+sshuser  ALL=(ALL:ALL)  ALL
+
 SSH ( HQ-SRV и BR-SRV )
 Создадим файл баннера, допустим "banner_ssh" и напишем текст ( можно написать без =, Authorized Access Only )
 nano /etc/banner_ssh
@@ -23,7 +34,4 @@ systemctl restart ssh
 Подключаемся с HQ-RTR указав имя созданного пользователя, ip-адрес HQ-SRV и порт 2026. Далее вводим пароль.
 Далее прописываем sudo su, если пароль не запросился и вы вошли под root, то всё сделано правильно
 
-HQ-RTR и BR-RTR
-Создадим пользователя net_admin и зададим ему пароль P@ssw0rd
-useradd net_admin
-passwd net_admin
+
