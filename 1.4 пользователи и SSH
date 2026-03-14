@@ -23,7 +23,7 @@ nano /etc/banner_ssh
 nano /etc/ssh/sshd_config
 
 Port 2026
-AllowUAsers sshuser
+AllowUsers sshuser
 Banner /etc/banner_ssh
 MaxAuthTries 2
 
