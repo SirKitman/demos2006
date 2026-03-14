@@ -70,6 +70,15 @@ auto ens224.999
 iface ens224.999 inet manual
 vlan-raw-device ens224:2
 
+allow-hotplug tun1
+iface tun1 inet tunnel
+address 10.10.0.1
+netmask 255.255.255.252
+mode gre
+local 172.16.1.2
+endpoint 172.16.2.2
+ttl 64
+
 BR-RTR
 
 auto ens192
