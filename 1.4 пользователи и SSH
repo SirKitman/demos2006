@@ -1,5 +1,5 @@
 HQ-SRV и BR-SRV
-useradd sshuser -u- 2026 -U - создание пользователя
+useradd sshuser -u 2026 -U - создание пользователя
 passwd sshuser - задать пароль пользователю
 вводим пароль пользователя - P@ssw0rd
 повторяем ввод пароля - P@ssw0rd
