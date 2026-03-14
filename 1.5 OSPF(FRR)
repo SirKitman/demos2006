@@ -1,4 +1,4 @@
-HQ-RTR
+HQ-RTR, так же на BR-RTR
 
 Устанавливаем, при необходимости, frr.
 apt install frr -y
@@ -7,6 +7,8 @@ apt install frr -y
 nano /etc/frr/daemons
 
 ospfd=no , сделать ospfd=yes
+
+Конец общего блока
 
 Добавляем frr в автозагрузку.
 systemctl enable frr
