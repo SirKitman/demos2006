@@ -18,4 +18,5 @@ timedatectl set-timezone Asia/Tomsk
 
 Если нужно прервать процесс то для начала:
 ps aux - выводит все процессы 
+
 kill -9 {номер процесса}
