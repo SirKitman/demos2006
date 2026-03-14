@@ -8,7 +8,7 @@ apt install isc-dhcp-server -y
 # Далее, переходим в nano /etc/dhcp/dhcpd.conf, комментируем все белые строки и прописываем следующее.
 
 subnet 192.168.2.0 netmask 255.255.255.240 {
-    range 192.168.2.4 192.168.2.14;
+    range 192.168.200.4 192.168.200.14;
     option domain-name-servers 192.168.1.2;
     option domain-name "au-team.irpo";
     option routers 192.168.2.1;
