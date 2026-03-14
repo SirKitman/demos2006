@@ -93,3 +93,28 @@ router ospf
   area 0 authentication
 exit
 !
+
+2 вариант настройки для BR-RTR
+
+nano /etc/frr/frr.conf все удалить и вставить:
+
+frr version 8.4.4
+frr defaults traditional
+hostname hq-rtr
+log syslog informational
+no ipv6 forwarding
+service integrated-vtysh-config
+!
+interface tun1
+  ip ospf authentication
+  ip ospf authentication-key P@ssw0rd
+  no ip ospf passive
+exit
+!
+router ospf
+  passive-interface default
+  network 10.10.0.0/30 area 0
+  network 192.168.1.0/28 area 0
+  area 0 authentication
+exit
+!
