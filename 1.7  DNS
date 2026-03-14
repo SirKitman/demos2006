@@ -37,7 +37,6 @@ $TTL    604800
                          604800 )       ; Negative Cache TTL
 ;
 @       IN      NS      au-team.irpo.
-@       IN      NS      192.168.100.2
 hq-srv  IN      A       192.168.100.1
 hq-rtr  IN      A       192.168.100.2
 hq-cli  IN      A       192.168.200.2
