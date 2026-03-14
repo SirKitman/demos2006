@@ -1,6 +1,30 @@
 HQ-SRV
 
 Скачиваем пакет bind9
-apt install bind9 -y
+apt install bind9 dnsutils -y
+
+nano /etc/bind/named.conf.default-zones
+
+
 
 nano /etc/bind/named.conf.options
+zone "au-team.irpo" {
+    type master;
+    file "/etc/bind/au-team.irpo";
+};
+
+zone "100.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/au-team.irpo_obr";
+};
+
+zone "200.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/au-team.irpo_hqobr";
+};
+
+cp /etc/bind/db.local /etc/bind/au-team.irpo
+cp /etc/bind/db.127 /etc/bind/au-team.irpo_obr
+cp /etc/bind/db.127 /etc/bind/au-team.irpo_hqobr
+
+nano /etc/bind/au-team.irpo
