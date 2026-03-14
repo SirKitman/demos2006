@@ -3,7 +3,7 @@ HQ-RTR
 # Устанавливаем DHCP сервер, при необходимости:
 apt install isc-dhcp-server -y
 
-# Переходим в nano /etc/default/isc-dhcp-server и в строчке INTERFACESv4= прописываем интерфейс, КОТОРЫЙ ИДЕТ В СТОРОНУ HQ-CLI.
+# Переходим в nano /etc/default/isc-dhcp-server и в строчке INTERFACESv4= прописываем интерфейс, ens224:1
 
 # Далее, переходим в nano /etc/dhcp/dhcpd.conf, комментируем все белые строки и прописываем следующее.
 
