@@ -1,7 +1,7 @@
 raid
 hq-srv
 
-apt install mdadm
+apt install mdadm -y
 
 fdisk /dev/sdb
 Сначала вводим g, чтобы создать раздел, затем вводим n и прокликиваем enter. Для выхода и сохранения вводим w.
