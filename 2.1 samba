@@ -1,4 +1,70 @@
 br-srv
 
+apt install samba smbclient winbind krb5-config -y
+
+При установке krb5-config будут запрошены параметры:
+Default Kerberos realm: AU-TEAM.IRPO
+Kerberos servers: br-srv.au-team.irpo
+Administrative server: br-srv.au-team.irpo
+
+systemctl stop samba-ad-dc smbd nmbd winbind 2>/dev/null
+systemctl disable samba-ad-dc smbd nmbd winbind 2>/dev/null
+mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
+
+
+samba-tool domain provision --use-rfc2307 --interactive
+Параметры при установке:
+Realm: AU-TEAM.IRPO
+Domain: AU-TEAM
+Server Role: dc
+DNS backend: SAMBA_INTERNAL
+DNS forwarder IP: 192.168.100.2
+Administrator password: P@ssw0rd
+
+
+cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
+
+Запуск Samba AD DC
+systemctl unmask samba-ad-dc
+systemctl enable samba-ad-dc
+systemctl start samba-ad-dc
+
+Проверка работы домена
+samba-tool domain level show
+smbclient -L localhost -N
+
+
+samba-tool group add hq
+samba-tool user create hquser1 P@ssw0rd
+samba-tool user create hquser2 P@ssw0rd
+samba-tool user create hquser3 P@ssw0rd
+samba-tool user create hquser4 P@ssw0rd
+samba-tool user create hquser5 P@ssw0rd
+samba-tool group addmembers hq hquser1,hquser2,hquser3,hquser4,hquser5
+mkdir -p /usr/local/bin/restricted
+ln -sf /usr/bin/cat /usr/local/bin/restricted/cat
+ln -sf /usr/bin/grep /usr/local/bin/restricted/grep
+ln -sf /usr/bin/id /usr/local/bin/restricted/id
+
+nano /usr/local/bin/restricted_shell.sh
+#!/bin/bash
+export PATH="/usr/local/bin/restricted"
+exec /bin/rbash
+
+chmod +x /usr/local/bin/restricted_shell.sh
+
+hq-cli (неработает)
+apt install realmd sssd sssd-tools adcli packagekit samba-common-bin -y
+
+nano /etc/resolv.conf
+search au-team.irpo
+nameserver 192.168.4.2
+
+realm join AU-TEAM.IRPO -U Administrator
+# Пароль: P@ssw0rd
+
+
+
+
 
 
