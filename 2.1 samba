@@ -1,32 +1,4 @@
 br-srv
 
-Устанавливаем пакеты samba
-apt install samba* krb5* -y
 
-Переходим в конфигурационный файл: nano /etc/krb5.conf
-
-После, приводим его в следующий вид:
-
-[logging]
-	default = FILE:/var/log/krb5libs.log
-	kdc = FILE:/var/log/krb5kdc.log
-	admin_server = FILE:/var/log/kadmind.log
-[libdefaults]
-	dns_lookup_realm = false
-	dns_lookup_kdc = true
-	ticket_lifetime = 24h
-	forwardable = true
-	default_realm = true
-	default_realm = AU-TEAM.IRPO
-[realms]
-AU-TEAM. IRPO = {
-kdc = br-srv.au-team.irpo
-admin_server = br-srv.au-team.irpo
-}
-[domain_realm]
-.au-team.irpo = AU-TEAM.IRPO
-au-team.irpo = AU-TEAM.IRPO
-
-Далее нам нужно удалить файл: rm /etc/samba/smb.conf
-samba-tool domain provision --use-rfc2307 —interactive
 
