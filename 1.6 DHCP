@@ -18,5 +18,5 @@ subnet 192.168.200.0 netmask 255.255.255.240 {
 
 Перезагружаем службу systemctl restart isc-dhcp-server и проверяем статус, в случае если не было ошибки о неудачном запуске DHCP, systemctl status isc-dhcp-server. 
 Видим зеленую строку active (running), служба запущена.
-Проверим выдачу ip-адреса на HQ-CLI. Перейдем в терминал, заходим на root su root, пишем systemctl restart networking и проверяем ip-адрес: ip -br a
+Проверим выдачу ip-адреса на HQ-CLI. Перейдем в терминал, заходим на root su root, пишем systemctl restart networking и проверяем ip-адрес: ip -br -c a
 ❗❗❗ МОЖЕТ ВЫДАВАТЬСЯ IP ЕЩЁ И НА HQ-SRV, ПРОВЕРЬТЕ ЧТОБЫ НЕ БЫЛО 2 АДРЕСА, ПЕРЕЗАПУСТИЕ NETWORKING НА HQ-SRV ❗❗❗
