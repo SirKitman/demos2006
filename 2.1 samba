@@ -1,0 +1,25 @@
+br-srv
+
+apt install samba* krb5*
+
+nano /etc/krb5.conf
+
+[logging]
+	default = FILE:/var/log/krb5libs.log
+	kdc = FILE:/var/log/krb5kdc.log
+	admin_server = FILE:/var/log/kadmind.log
+[libdefaults]
+	dns_lookup_realm = false
+	dns_lookup_kdc = true
+	ticket_lifetime = 24h
+	forwardable = true
+	default_realm = true
+	default_realm = AU-TEAM.IRPO
+[realms]
+AU-TEAM. IRPO = {
+kdc = br-srv.au-team.irpo
+admin_server = br-srv.au-team.irpo
+}
+[domain_realm]
+.au-team.irpo = AU-TEAM.IRPO
+au-team.irpo = AU-TEAM.IRPO
