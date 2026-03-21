@@ -22,4 +22,6 @@ pool 2.debian.pool.ntp.org iburst
 server 172.16.1.1
 systemctl restart chrony 
 
-Проверяем работу командой сhronyc sources
+Проверяем работу командой 
+сhronyc sources
+
