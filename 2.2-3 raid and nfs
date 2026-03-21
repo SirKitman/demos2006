@@ -16,7 +16,7 @@ mount /dev/md0 /raid
 nfs
 hq-srv
 
-apt install nfs-kernel-server
+apt install nfs-kernel-server -y
 
 mkdir /raid/nfs 
 chmod -R 777 /raid/nfs
