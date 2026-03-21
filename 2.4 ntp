@@ -1,6 +1,6 @@
 isp
 
-apt install chrony
+apt install chrony -y
 
 nano /etc/chrony/chrony.conf
 комментим 
@@ -13,7 +13,7 @@ allow 0/0
 systemctl restart chronyd
 
 Все машины кроме isp
-apt install chrony
+apt install chrony -y
 
 nano /etc/chrony/chrony.conf
 комментим 
