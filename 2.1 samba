@@ -1,8 +1,11 @@
 br-srv
 
-apt install samba* krb5*
+Устанавливаем пакеты samba
+apt install samba* krb5* -y
 
-nano /etc/krb5.conf
+Переходим в конфигурационный файл: nano /etc/krb5.conf
+
+После, приводим его в следующий вид:
 
 [logging]
 	default = FILE:/var/log/krb5libs.log
@@ -24,6 +27,6 @@ admin_server = br-srv.au-team.irpo
 .au-team.irpo = AU-TEAM.IRPO
 au-team.irpo = AU-TEAM.IRPO
 
-rm /etc/samba/smb.conf
+Далее нам нужно удалить файл: rm /etc/samba/smb.conf
 samba-tool domain provision --use-rfc2307 —interactive
 
