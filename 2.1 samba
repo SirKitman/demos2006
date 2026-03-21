@@ -23,3 +23,7 @@ admin_server = br-srv.au-team.irpo
 [domain_realm]
 .au-team.irpo = AU-TEAM.IRPO
 au-team.irpo = AU-TEAM.IRPO
+
+rm /etc/samba/smb.conf
+samba-tool domain provision --use-rfc2307 —interactive
+
