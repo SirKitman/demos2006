@@ -5,9 +5,6 @@ apt install bind9 dnsutils -y
 
 nano /etc/bind/named.conf.default-zones
 
-
-
-nano /etc/bind/named.conf.options
 zone "au-team.irpo" {
     type master;
     file "/etc/bind/au-team.irpo";
