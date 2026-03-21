@@ -53,7 +53,10 @@ exec /bin/rbash
 
 chmod +x /usr/local/bin/restricted_shell.sh
 
-hq-cli (неработает)
+isp
+ip route 192.168.1.0/28 via 172.16.2.2
+
+hq-cli 
 apt install realmd sssd sssd-tools adcli packagekit samba-common-bin -y
 
 nano /etc/resolv.conf
