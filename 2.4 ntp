@@ -1,0 +1,25 @@
+isp
+
+apt install chrony
+
+nano /etc/chrony/chrony.conf
+комментим 
+pool 2.debian.pool.ntp.org iburst
+добовляем
+server 127.0.0.1 iburst prefer
+local stratum 5
+allow 0/0
+
+systemctl restart chronyd
+
+Все машины кроме isp
+apt install chrony
+
+nano /etc/chrony/chrony.conf
+комментим 
+pool 2.debian.pool.ntp.org iburst
+добовляем
+server 172.16.1.1
+systemctl restart chrony 
+
+Проверяем работу командой сhronyc sources
