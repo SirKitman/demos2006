@@ -62,6 +62,7 @@ apt install realmd sssd sssd-tools adcli packagekit samba-common-bin -y
 nano /etc/resolv.conf
 search au-team.irpo
 nameserver 192.168.100.2
+ставим временно nameserver 192.168.1.2
 
 realm join AU-TEAM.IRPO -U Administrator
 # Пароль: P@ssw0rd
