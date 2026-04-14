@@ -102,7 +102,7 @@ nano /etc/frr/frr.conf все удалить и вставить:
 
 frr version 8.4.4
 frr defaults traditional
-hostname hq-rtr
+hostname br-rtr
 log syslog informational
 no ipv6 forwarding
 service integrated-vtysh-config
