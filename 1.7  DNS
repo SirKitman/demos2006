@@ -3,6 +3,20 @@ HQ-SRV
 Скачиваем пакет bind9
 apt install bind9 dnsutils -y
 
+nano /etc/bind/named.conf.options
+options {
+    listen-on port 53 { any; };
+    listen-on-v6 port 53 { any; };
+    directory "/var/cache/bind";
+    allow-query { any; };
+    allow-recursion { any; };
+    forwarders { 77.88.8.7; 1.1.1.1; };
+    forward only;
+    dnssec-validation no;
+};
+
+
+
 nano /etc/bind/named.conf.default-zones
 
 zone "au-team.irpo" {
