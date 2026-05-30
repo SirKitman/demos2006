@@ -1,12 +1,12 @@
 HQ-SRV и BR-SRV
-useradd sshuser -u 2026 -U - создание пользователя
+adduser sshuser -u 2026  - создание пользователя
 passwd sshuser - задать пароль пользователю
 вводим пароль пользователя - P@ssw0rd
 повторяем ввод пароля - P@ssw0rd
 
 HQ-RTR и BR-RTR
 Создадим пользователя net_admin и зададим ему пароль P@ssw0rd
-useradd net_admin
+adduser net_admin
 passwd net_admin
 
 HQ-RTR и BR-RTR
