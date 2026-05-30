@@ -23,7 +23,7 @@ chmod -R 777 /raid/nfs
 
 nano /etc/exports
 добавляем строку 
-/raid/nfs  192.168.200.0/28(rw,sync,no_root_squash,sudtree_check)
+/raid/nfs  192.168.200.0/28(rw,sync,no_root_squash,subtree_check)
 
 exportfs -a
 
