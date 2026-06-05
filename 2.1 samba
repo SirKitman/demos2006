@@ -57,6 +57,12 @@ visudo
 
 %hq ALL=(ALL) /bin/cat, /usr/bin/cat, /bin/grep, /usr/bin/grep, /bin/id, /usr/bin/id
 
+# Проверить синтаксис
+sudo visudo -c
+
+# Посмотреть права для группы hq
+sudo -l -U hquser1
+
 isp
 ip route add 192.168.1.0/28 via 172.16.2.2
 ip route add 192.168.100.0/27 via 172.16.1.2
