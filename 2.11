@@ -1,0 +1,10 @@
+CLI
+https://browser.yandex.ru
+#И дважды нажимаем на кнопку скачать, после того как скачали нажать по пакету yandex.deb > ПКМ > Open With > Software Install, спустя минут 5 установит.
+
+http://web.au-team.irpo
+
+http://docker.au-team.irpo
+
+curl http://web.au-team.irpo -u WEB:P@ssw0rd
+curl http://docker.au-team.irpo
