@@ -1,0 +1,16 @@
+на BR-SRV
+apt install iptables iptables-persistent -y
+
+iptables -t nat -A PREROUTING -p tcp --dport 8081 -j DNAT --to-destination 192.168.1.2:8081
+iptables -t nat -A PREROUTING -p tcp --dport 2011 -j DNAT --to-destination 192.168.1.2:2011
+iptables -A FORWARD -p tcp -d 192.168.1.2 --dport 8081 -j ACCEPT
+iptables -A FORWARD -p tcp -d 192.168.1.2 --dport 2011 -j ACCEPT
+iptables-save > /etc/iptables/rules.v4
+
+На HQ-RTR
+iptables -t nat -A PREROUTING -p tcp --dport 8081 -j DNAT --to-destination 192.168.100.2:80
+iptables -t nat -A PREROUTING -p tcp --dport 2011 -j DNAT --to-destination 192.168.100.2:2011
+iptables -A FORWARD -p tcp -d 192.168.100.2 --dport 80 -j ACCEPT
+iptables -A FORWARD -p tcp -d 192.168.100.2 --dport 2011 -j ACCEPT
+iptables-save > /etc/iptables/rules.v4
+
