@@ -1,0 +1,46 @@
+
+apt install apache2 -y
+systemctl enable apache2
+systemctl start apache2
+
+apt install mariadb-server mariadb-client -y
+systemctl enable mariadb
+systemctl start mariadb
+
+apt install php libapache2-mod-php php-mysql -y
+
+lsblk
+
+mkdir -p /mnt/iso
+mount /dev/cdrom /mnt/iso
+
+mysql -u root <<EOF
+CREATE DATABASE webdb;
+CREATE USER 'web1'@'localhost' IDENTIFIED BY 'P@ssw0rd';
+GRANT ALL PRIVILEGES ON webdb.* TO 'web1'@'localhost';
+FLUSH PRIVILEGES;
+EOF
+
+mysql -u root webdb < /mnt/iso/web/dump.sql
+
+cp /mnt/iso/web/index.php /var/www/html/
+cp -r /mnt/iso/web/images /var/www/html/
+#Возможно за место директории images будет файл logo.png
+chown -R www-data:www-data /var/www/html/
+
+Убедитесь, что index.php содержит правильные параметры подключения к БД. При необходимости отредактируйте:
+nano /var/www/html/index.php
+
+$servername = "localhost";
+$username = "web1";
+$password = "P@ssw0rd";
+$dbname = "webdb";
+
+
+
+rm -f /var/www/html/index.html
+
+systemctl restart apache2
+
+apt install curl -y
+curl http://localhost
