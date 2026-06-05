@@ -1,0 +1,61 @@
+
+apt install docker.io docker-compose -y
+systemctl enable docker
+systemctl start docker
+
+lsblk
+
+mkdir -p /mnt/iso
+mount /dev/cdrom /mnt/iso
+docker load < /mnt/iso/docker/site_latest.tar
+docker load < /mnt/iso/docker/mariadb_latest.tar
+
+docker images
+
+mkdir -p /opt/testapp
+nano /opt/testapp/docker-compose.yml
+
+version: '3'
+
+services:
+  site:
+    image: site:latest
+    container_name: site
+    restart: always
+    ports:
+      - "8081:8000"
+    environment:
+      DB_HOST: "192.168.1.2"
+      DB_PORT: "3306"
+      DB_NAME: testdb1
+      DB_USER: test1
+      DB_PASS: P@ssw0rd
+      DB_TYPE: maria
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.11
+    container_name: db
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_DATABASE: testdb1
+      MARIADB_USER: test1
+      MARIADB_PASSWORD: P@ssw0rd
+      MARIADB_ROOT_PASSWORD: P@ssw0rd
+    restart: always
+
+
+
+
+cd /opt/testapp
+docker-compose up -d
+
+docker ps
+apt install curl -y
+curl http://localhost:8080
+
+
+
+
