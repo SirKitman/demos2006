@@ -1,0 +1,24 @@
+
+apt install ansible sshpass -y
+
+mkdir -p /etc/ansible
+nano /etc/ansible/hosts
+
+[hq]
+hq-srv ansible_host=192.168.100.2 ansible_user=sshuser ansible_password=P@ssw0rd ansible_port=2011
+hq-rtr ansible_host=192.168.100.1 ansible_user=net_admin ansible_password=P@ssw0rd
+hq-cli ansible_host=192.168.200.5 ansible_user=locadm ansible_password=P@ssw0rd
+
+[br]
+br-rtr ansible_host=192.168.1.1 ansible_user=net_admin ansible_password=P@ssw0rd
+
+
+nano /etc/ansible/ansible.cfg
+
+[defaults]
+inventory = /etc/ansible/hosts
+host_key_checking = False
+
+
+ansible all -m ping
+
