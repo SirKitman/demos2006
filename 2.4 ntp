@@ -7,19 +7,19 @@ nano /etc/chrony/chrony.conf
 pool 2.debian.pool.ntp.org iburst
 добовляем
 server 127.0.0.1 iburst prefer
-local stratum 5
+local stratum 6
 allow 0/0
 
 systemctl restart chronyd
 
-Все машины кроме isp
+Все машины кроме isp и hq-rtr
 apt install chrony -y
 
 nano /etc/chrony/chrony.conf
 комментим 
 pool 2.debian.pool.ntp.org iburst
 добовляем
-server 172.16.1.1
+server 172.16.10.1
 systemctl restart chrony 
 
 Проверяем работу командой 
