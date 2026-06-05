@@ -20,3 +20,5 @@ timedatectl set-timezone Asia/Tomsk
 ps aux - выводит все процессы 
 
 kill -9 {номер процесса}
+
+Сайт B: https://codeberg.org/SirKitman/demos2006
