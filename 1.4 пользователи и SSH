@@ -1,5 +1,5 @@
 HQ-SRV и BR-SRV
-adduser sshuser -u 2026  - создание пользователя
+adduser sshuser -u 2011  - создание пользователя
 passwd sshuser - задать пароль пользователю
 вводим пароль пользователя - P@ssw0rd
 повторяем ввод пароля - P@ssw0rd
@@ -22,7 +22,7 @@ nano /etc/banner_ssh
 Пропишем выделенные параметры в конфигурационный файл
 nano /etc/ssh/sshd_config
 
-Port 2026
+Port 2011
 AllowUsers sshuser
 Banner /etc/banner_ssh
 MaxAuthTries 2
