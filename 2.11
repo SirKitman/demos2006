@@ -6,5 +6,8 @@ http://web.au-team.irpo
 
 http://docker.au-team.irpo
 
+curl http://web.au-team.irpo -u WEB1:P@ssw0rd
+или
 curl http://web.au-team.irpo -u WEB:P@ssw0rd
+
 curl http://docker.au-team.irpo
