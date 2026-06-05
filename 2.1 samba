@@ -53,6 +53,10 @@ exec /bin/rbash
 
 chmod +x /usr/local/bin/restricted_shell.sh
 
+visudo 
+
+%hq ALL=(ALL) /bin/cat, /usr/bin/cat, /bin/grep, /usr/bin/grep, /bin/id, /usr/bin/id
+
 isp
 ip route add 192.168.1.0/28 via 172.16.2.2
 ip route add 192.168.100.0/27 via 172.16.1.2
