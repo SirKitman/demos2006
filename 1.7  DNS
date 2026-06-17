@@ -40,7 +40,7 @@ cp /etc/bind/db.127 /etc/bind/au-team.irpo_hqobr
 
 nano /etc/bind/au-team.irpo
 $TTL    604800
-@       IN      SOA     au-team.irpo. root.au-team.irpo. (
+@       IN      SOA     hq-srv.au-team.irpo. root.au-team.irpo. (
                               2         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
